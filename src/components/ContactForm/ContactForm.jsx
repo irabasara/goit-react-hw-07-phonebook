@@ -2,9 +2,9 @@ import css from './ContactForm.module.css';
 import * as yup from 'yup';
 import { nanoid } from '@reduxjs/toolkit';
 import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
-import { addContact } from 'redux/contactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selector';
+import { addContacts } from 'redux/contactsOperations';
 
 const Schema = yup.object().shape({
   name: yup
@@ -47,12 +47,10 @@ export const ContactForm = () => {
 
       return;
     }
-
     dispatch(
-      addContact({
-        id: nanoid(),
-        name: values.name,
-        number: values.number,
+      addContacts({
+        name: values.name.toLowerCase(),
+        phone: values.number.toLowerCase(),
       })
     );
 
