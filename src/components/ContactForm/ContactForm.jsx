@@ -50,7 +50,7 @@ export const ContactForm = () => {
     dispatch(
       addContacts({
         name: values.name.toLowerCase(),
-        phone: values.number.toLowerCase(),
+        phone: values.number,
       })
     );
 

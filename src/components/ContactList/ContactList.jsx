@@ -24,9 +24,9 @@ export const ContactList = () => {
   const filteredContact = getFilteredContact();
 
   return (
-    <ul>
-      {contacts &&
-        filteredContact.map(contact => {
+    contacts && (
+      <ul>
+        {filteredContact.map(contact => {
           const { id, name, phone } = contact;
           return (
             <li key={id} className={css.contactsItem}>
@@ -37,7 +37,8 @@ export const ContactList = () => {
             </li>
           );
         })}
-    </ul>
+      </ul>
+    )
   );
 };
 
